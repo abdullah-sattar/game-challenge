@@ -34,6 +34,27 @@
         border-radius: 0 0 100% 0;
         background-color: #32A4EA;
       }
+
+      >#board__pad1:active {
+        background-color: #32df32;
+        box-shadow: -2px 5px 50px 10px #a7fba7;
+      }
+
+      >#board__pad2:active {
+        background-color: #e93f3f;
+        box-shadow: 2px 5px 50px 10px lightcoral;
+      }
+
+      >#board__pad3:active {
+        background-color: #fcff52;
+        box-shadow: -2px -5px 50px 10px #c0c168;
+      }
+
+      >#board__pad4:active {
+        background-color: #006bff;
+        box-shadow: 2px -5px 50px 10px #687ec1;
+      }
+
     }
   }
 }
