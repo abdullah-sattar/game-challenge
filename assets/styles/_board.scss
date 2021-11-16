@@ -1,0 +1,39 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .board {
+    height: 45vh;
+    width: 45vh;
+    display: flex;
+
+    >.board__circle {
+      border: 3px solid black;
+      width: 100%;
+      border-radius: 50%;
+      display: flex;
+      flex-wrap: wrap;
+
+      >#board__pad1 {
+        border-radius: 100% 0 0 0;
+        background-color: #61D48F;
+      }
+
+      >#board__pad2 {
+        border-radius: 0 100% 0 0;
+        background-color: #D85E5B;
+      }
+
+      >#board__pad3 {
+        border-radius: 0 0 0 100%;
+        background-color: #EBEC77;
+      }
+
+      >#board__pad4 {
+        border-radius: 0 0 100% 0;
+        background-color: #32A4EA;
+      }
+    }
+  }
+}
