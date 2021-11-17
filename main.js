@@ -16,6 +16,24 @@ let pad4 = document.querySelector("#board__pad4");
 //Create an array containing the pads
 // const boardPads = [pads];
 
+//Create click events for each pad and push the selection into userPads
+const userClick1 = pad1.addEventListener("click", () => {
+    const padFlash1 = pad1.style.backgroundColor = "#32df32";
+    userPads.push(padFlash1);
+})
+const userClick2 = pad2.addEventListener("click", () => {
+    const padFlash2 = pad2.style.backgroundColor = "#D85E5B";
+    userPads.push(padFlash2);
+})
+const userClick3 = pad3.addEventListener("click", () => {
+    const padFlash3 = pad3.style.backgroundColor = "#EBEC77";
+    userPads.push(padFlash3);
+})
+const userClick4 = pad4.addEventListener("click", () => {
+    const padFlash4 = pad4.style.backgroundColor = "#32A4EA";
+    userPads.push(padFlash4);
+})
+
 //Create empty arrays one for the randomly selected sequence and one for the user choices
 const randomPads = [];
 const userPads = [];
@@ -37,9 +55,9 @@ const padTimeOut4 = () => {
 //create a click event for the start-btn to start the game 
 const startGame = start.addEventListener("click", () => {
 
-    for (let i = 0; i <= 20; i++) {
+    while (randomPads === userPads) {
         //Create a variable that picks a random pad from the array and pushes it to the randomPads array
-        const random = pads[i][Math.floor(Math.random() * pads.length)];
+        const random = pads[Math.floor(Math.random() * pads.length)];
         randomPads.push(random);
 
         //Use forEach on the randomPads array to apply color flash to each item 
@@ -60,6 +78,15 @@ const startGame = start.addEventListener("click", () => {
                 setTimeout(padTimeOut4, 700)
             }
         })
+
+        //Create if statement to deterimine if randomPads and userPads are equal in length
+        if (randomPads.length === userPads.length) {
+            if (randomPads !== userPads) {
+                break
+            }
+            else
+        }
+
     }
     
 })
