@@ -20,8 +20,18 @@ let pad4 = document.querySelector("#board__pad4");
 const randomPads = [];
 const userPads = [];
 
+//Create variables to setTimeout to revert the pad color after "flash"
 const padTimeOut1 = () => {
     pad1.style.backgroundColor = "#61D48F";
+}; 
+const padTimeOut2 = () => {
+    pad2.style.backgroundColor = "#D85E5B";
+}; 
+const padTimeOut3 = () => {
+    pad3.style.backgroundColor = "#EBEC77";
+}; 
+const padTimeOut4 = () => {
+    pad4.style.backgroundColor = "#32A4EA";
 }; 
 
 //create a click event for the start-btn to start the game 
@@ -34,16 +44,19 @@ const startGame = start.addEventListener("click", () => {
     //Use forEach on the randomPads array to apply color flash to each item 
     randomPads.forEach((pads) => {
         
-        //Create if statement to determine which pad was selected and to flash the correct corresponding color
+        //Create if statement to determine which pad was selected and to flash the correct corresponding color, the setTimeout to revert to original color
         if (pads === pad1) {
             pad1.style.backgroundColor = "#32df32";
-            setTimeout(padTimeOut1, 700);
+            setTimeout(padTimeOut1, 700)
         } else if (pads === pad2) {
             pad2.style.backgroundColor = "#e93f3f";
+            setTimeout(padTimeOut2, 700)
         } else if (pads === pad3) {
             pad3.style.backgroundColor = "#fcff52";
+            setTimeout(padTimeOut3, 700)
         } else if (pads === pad4) {
             pad4.style.backgroundColor = "#006bff";
+            setTimeout(padTimeOut4, 700)
         }
     })
 })
