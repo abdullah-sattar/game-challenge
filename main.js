@@ -16,6 +16,17 @@ let pads = document.querySelectorAll(".board__pad");
 const randomPads = [];
 const userPads = [];
 
+//create a click event for the start-btn to start the game by triggering the for loop
+const startGame = start.addEventListener("click", () => {
+    //Create a variable that picks a random pad from the array and pushes it to the randomPads array
+    const random = pads[Math.floor(Math.random() * pads.length)];
+    randomPads.push(random);
+})
+
+
+//dont need a for loop on the "pads" that can be a simple random number generator which sends a new pad to the randomPads array, when the user clicks the correct sequence an
+//if statement send back to the random generator adding a new pad to the sequence. Where the for loops come into play is when you want to display the sequence, so the for loop will be 
+//for the randomPads
 
 
 
