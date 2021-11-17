@@ -2,6 +2,10 @@
 
 let start = document.querySelector(".start-btn");
 let pads = document.querySelectorAll(".board__pad");
+let pad1 = document.querySelector("#board__pad1");
+let pad2 = document.querySelector("#board__pad2");
+let pad3 = document.querySelector("#board__pad3");
+let pad4 = document.querySelector("#board__pad4");
 
 //Click the start button needs to reset the score to zero and start the game
 
@@ -16,11 +20,27 @@ let pads = document.querySelectorAll(".board__pad");
 const randomPads = [];
 const userPads = [];
 
-//create a click event for the start-btn to start the game by triggering the for loop
+//create a click event for the start-btn to start the game 
 const startGame = start.addEventListener("click", () => {
+
     //Create a variable that picks a random pad from the array and pushes it to the randomPads array
     const random = pads[Math.floor(Math.random() * pads.length)];
     randomPads.push(random);
+
+    //Use forEach on the randomPads array to apply color flash to each item 
+    randomPads.forEach(() => {
+        
+        //Create if statement to determine which pad was selected and to flash the correct corresponding color
+        if (random === pad1) {
+            pad1.style.backgroundColor = "#32df32"
+        } else if (random === pad2) {
+            pad2.style.backgroundColor = "#e93f3f"
+        } else if (random === pad3) {
+            pad3.style.backgroundColor = "#fcff52"
+        } else if (random === pad4) {
+            pad4.style.backgroundColor = "#006bff"
+        }
+    })
 })
 
 
