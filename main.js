@@ -19,18 +19,22 @@ let pad4 = document.querySelector("#board__pad4");
 //Create click events for each pad and push the selection into userPads
 const userClick1 = pad1.addEventListener("click", () => {
     const padFlash1 = pad1.style.backgroundColor = "#32df32";
+    setTimeout(padTimeOut1, 300);
     userPads.push(padFlash1);
 })
 const userClick2 = pad2.addEventListener("click", () => {
-    const padFlash2 = pad2.style.backgroundColor = "#D85E5B";
+    const padFlash2 = pad2.style.backgroundColor = "#e93f3f";
+    setTimeout(padTimeOut2, 300)
     userPads.push(padFlash2);
 })
 const userClick3 = pad3.addEventListener("click", () => {
-    const padFlash3 = pad3.style.backgroundColor = "#EBEC77";
+    const padFlash3 = pad3.style.backgroundColor = "#fcff52";
+    setTimeout(padTimeOut3, 300)
     userPads.push(padFlash3);
 })
 const userClick4 = pad4.addEventListener("click", () => {
-    const padFlash4 = pad4.style.backgroundColor = "#32A4EA";
+    const padFlash4 = pad4.style.backgroundColor = "#006bff";
+    setTimeout(padTimeOut4, 300)
     userPads.push(padFlash4);
 })
 
@@ -52,41 +56,49 @@ const padTimeOut4 = () => {
     pad4.style.backgroundColor = "#32A4EA";
 }; 
 
+//create function for the if statment to determine correct color flash
+const comparePads = (pad) => {
+    if (pad === pad1) {
+    pad1.style.backgroundColor = "#32df32";
+    setTimeout(padTimeOut1, 300)
+    } else if (pad === pad2) {
+    pad2.style.backgroundColor = "#e93f3f";
+    setTimeout(padTimeOut2, 300)
+    } else if (pad === pad3) {
+    pad3.style.backgroundColor = "#fcff52";
+    setTimeout(padTimeOut3, 300)
+    } else if (pad === pad4) {
+    pad4.style.backgroundColor = "#006bff";
+    setTimeout(padTimeOut4, 300)
+    }
+}
+
 //create a click event for the start-btn to start the game 
 const startGame = start.addEventListener("click", () => {
 
-    while (randomPads === userPads) {
+    for (let i =0; i <= 20; i++) {
         //Create a variable that picks a random pad from the array and pushes it to the randomPads array
         const random = pads[Math.floor(Math.random() * pads.length)];
         randomPads.push(random);
-
+        console.log(randomPads)
         //Use forEach on the randomPads array to apply color flash to each item 
-        randomPads.forEach((pads) => {
+        randomPads.forEach((pad, i) => {
         
-            //Create if statement to determine which pad was selected and to flash the correct corresponding color, the setTimeout to revert to original color
-            if (pads === pad1) {
-                pad1.style.backgroundColor = "#32df32";
-                setTimeout(padTimeOut1, 700)
-            } else if (pads === pad2) {
-                pad2.style.backgroundColor = "#e93f3f";
-                setTimeout(padTimeOut2, 700)
-            } else if (pads === pad3) {
-                pad3.style.backgroundColor = "#fcff52";
-                setTimeout(padTimeOut3, 700)
-            } else if (pads === pad4) {
-                pad4.style.backgroundColor = "#006bff";
-                setTimeout(padTimeOut4, 700)
-            }
-        })
+            //Call the comparePads function and apply a setTimeout to have a time delay between each color flash 
+            setTimeout(() => {
+                comparePads(pad); 
+            }, i * 1000);
+
+        });
 
         //Create if statement to deterimine if randomPads and userPads are equal in length
-        if (randomPads.length === userPads.length) {
-            if (randomPads !== userPads) {
-                break
-            }
-            else
-        }
+        // if (randomPads.length === userPads.length) {
+        //     if (randomPads !== userPads) {
+        //         break
+        //     } else {
 
+        //     }
+        // }
     }
     
 })
