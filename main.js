@@ -20,27 +20,31 @@ let pad4 = document.querySelector("#board__pad4");
 const userClick1 = pad1.addEventListener("click", () => {
     const padFlash1 = pad1.style.backgroundColor = "#32df32";
     setTimeout(padTimeOut1, 300);
-    userPads.push(padFlash1);
+    userPads.push(pad1);
+    compareArrays();
 })
 const userClick2 = pad2.addEventListener("click", () => {
     const padFlash2 = pad2.style.backgroundColor = "#e93f3f";
     setTimeout(padTimeOut2, 300)
-    userPads.push(padFlash2);
+    userPads.push(pad2);
+    compareArrays();
 })
 const userClick3 = pad3.addEventListener("click", () => {
     const padFlash3 = pad3.style.backgroundColor = "#fcff52";
     setTimeout(padTimeOut3, 300)
-    userPads.push(padFlash3);
+    userPads.push(pad3);
+    compareArrays();
 })
 const userClick4 = pad4.addEventListener("click", () => {
     const padFlash4 = pad4.style.backgroundColor = "#006bff";
     setTimeout(padTimeOut4, 300)
-    userPads.push(padFlash4);
+    userPads.push(pad4);
+    compareArrays();
 })
 
 //Create empty arrays one for the randomly selected sequence and one for the user choices
-const randomPads = [];
-const userPads = [];
+let randomPads = [];
+let userPads = [];
 
 //Create variables to setTimeout to revert the pad color after "flash"
 const padTimeOut1 = () => {
@@ -74,41 +78,63 @@ const comparePads = (pad) => {
 }
 
 //create a click event for the start-btn to start the game 
-const startGame = start.addEventListener("click", () => {
+// const startGame = start.addEventListener("click", () => {
 
-    for (let i =0; i <= 20; i++) {
-        //Create a variable that picks a random pad from the array and pushes it to the randomPads array
-        const random = pads[Math.floor(Math.random() * pads.length)];
-        randomPads.push(random);
-        console.log(randomPads)
-        //Use forEach on the randomPads array to apply color flash to each item 
-        randomPads.forEach((pad, i) => {
+//     for (let i =0; i <= 20; i++) {
+//         //Create a variable that picks a random pad from the array and pushes it to the randomPads array
+//         const random = pads[Math.floor(Math.random() * pads.length)];
+//         randomPads.push(random);
+//         console.log(randomPads)
+//         //Use forEach on the randomPads array to apply color flash to each item 
+//         randomPads.forEach((pad, i) => {
         
-            //Call the comparePads function and apply a setTimeout to have a time delay between each color flash 
-            setTimeout(() => {
-                comparePads(pad); 
-            }, i * 1000);
+//             //Call the comparePads function and apply a setTimeout to have a time delay between each color flash 
+//             setTimeout(() => {
+//                 comparePads(pad); 
+//             }, i * 1000);
 
-        });
+            
+//         });
 
-        //Create if statement to deterimine if randomPads and userPads are equal in length
-        // if (randomPads.length === userPads.length) {
-        //     if (randomPads !== userPads) {
-        //         break
-        //     } else {
-
-        //     }
-        // }
-    }
+//         //Create if statement to deterimine if randomPads and userPads are equal in length
+//         if (randomPads.length === userPads.length) {
+//             if (randomPads !== userPads) {
+//                 break
+//             } else {
+//             }
+//         }
+//     }
     
-})
+// })
 
+const playGame = () => {
+    const random = pads[Math.floor(Math.random() * pads.length)];
+    randomPads.push(random);
+    randomPads.forEach((pad, i) => {
+        
+    //Call the comparePads function and apply a setTimeout to have a time delay between each color flash 
+    setTimeout(() => {
+        comparePads(pad); 
+    }, i * 1000);
+        
+                    
+    });
+}
 
+const compareArrays = () => {
+    if (JSON.stringify(randomPads) === JSON.stringify(userPads)) {
+        setTimeout(() => {
+            playGame();
+        }, 1000);
+        userPads = [];
+    }; 
+}
+
+const startGame = start.addEventListener("click", () => {
+    randomPads = [];
+    userPads = [];
+    playGame();
+});    
 //dont need a for loop on the "pads" that can be a simple random number generator which sends a new pad to the randomPads array, when the user clicks the correct sequence an
 //if statement send back to the random generator adding a new pad to the sequence. Where the for loops come into play is when you want to display the sequence, so the for loop will be 
 //for the randomPads
-
-
-
-
-
