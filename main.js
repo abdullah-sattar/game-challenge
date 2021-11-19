@@ -110,6 +110,7 @@ const comparePads = (pad) => {
 const playGame = () => {
     const random = pads[Math.floor(Math.random() * pads.length)];
     randomPads.push(random);
+    console.log(randomPads)
     randomPads.forEach((pad, i) => {
         
     //Call the comparePads function and apply a setTimeout to have a time delay between each color flash 
@@ -121,14 +122,24 @@ const playGame = () => {
     });
 }
 
-const compareArrays = () => {
-    if (JSON.stringify(randomPads) === JSON.stringify(userPads)) {
-        setTimeout(() => {
-            playGame();
-        }, 1000);
-        userPads = [];
-    }; 
-}
+//create a function that compares the arrays via an if statement and for loop
+const compareArrays = () => { 
+    if (randomPads.length !== userPads.length) {
+        return
+    } else {
+        for (let i = 0; i < randomPads.length; i++) {
+            if (randomPads[i] !== userPads[i]) {
+                return;
+            } else {
+                setTimeout(() => {
+                    playGame();
+                }, 1000);
+                userPads = [];
+            }
+        }
+    }  
+}    
+
 
 const startGame = start.addEventListener("click", () => {
     randomPads = [];
