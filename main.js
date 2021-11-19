@@ -1,11 +1,13 @@
 //Need to link pads and button from the html by selecting them via the queryselector
 
 let start = document.querySelector(".start-btn");
+let score = document.querySelector(".score")
 let pads = document.querySelectorAll(".board__pad");
 let pad1 = document.querySelector("#board__pad1");
 let pad2 = document.querySelector("#board__pad2");
 let pad3 = document.querySelector("#board__pad3");
 let pad4 = document.querySelector("#board__pad4");
+
 
 //Click the start button needs to reset the score to zero and start the game
 
@@ -119,6 +121,8 @@ const comparePads = (pad) => {
     
 // })
 
+let increaseScore = 0;
+
 const playGame = () => {
     const random = pads[Math.floor(Math.random() * pads.length)];
     randomPads.push(random);
@@ -146,15 +150,17 @@ const compareArrays = () => {
                 return;
             }
         }
-        setTimeout(() => {
-                    playGame();
-                }, 1000);
-        userPads = [];
+    setTimeout(() => {
+        playGame();
+    }, 1000);
+    userPads = []; 
+    score.innerHTML = `SCORE = ${increaseScore = increaseScore + 1}`
     }  
-}    
+}  
 
 
 const startGame = start.addEventListener("click", () => {
+    score.innerHTML = `SCORE = ${increaseScore}`;
     randomPads = [];
     userPads = [];
     playGame();
