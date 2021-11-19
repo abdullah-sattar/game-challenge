@@ -1,12 +1,14 @@
 //Need to link pads and button from the html by selecting them via the queryselector
 
 let start = document.querySelector(".start-btn");
-let score = document.querySelector(".score")
+let score = document.querySelector(".score");
+let gameOver = document.querySelector("h3");
 let pads = document.querySelectorAll(".board__pad");
 let pad1 = document.querySelector("#board__pad1");
 let pad2 = document.querySelector("#board__pad2");
 let pad3 = document.querySelector("#board__pad3");
 let pad4 = document.querySelector("#board__pad4");
+
 
 
 //Click the start button needs to reset the score to zero and start the game
@@ -132,7 +134,7 @@ const playGame = () => {
     //Call the comparePads function and apply a setTimeout to have a time delay between each color flash 
     setTimeout(() => {
         comparePads(pad); 
-    }, i * 1000);
+    }, i * 700);
         
                     
     });
@@ -147,6 +149,7 @@ const compareArrays = () => {
         for (let i = 0; i < randomPads.length; i++) {
             console.log(randomPads[i], userPads[i]);
             if (randomPads[i] !== userPads[i]) {
+                gameOver.style.display = "block";
                 return;
             }
         }
@@ -160,10 +163,13 @@ const compareArrays = () => {
 
 
 const startGame = start.addEventListener("click", () => {
-    score.innerHTML = `SCORE = ${increaseScore}`;
+    gameOver.style.display = "none";
+    score.innerHTML = `SCORE = ${increaseScore = 0}`;
     randomPads = [];
     userPads = [];
-    playGame();
+    setTimeout(() => {
+        playGame();
+    }, 500);
 });    
 //dont need a for loop on the "pads" that can be a simple random number generator which sends a new pad to the randomPads array, when the user clicks the correct sequence an
 //if statement send back to the random generator adding a new pad to the sequence. Where the for loops come into play is when you want to display the sequence, so the for loop will be 
