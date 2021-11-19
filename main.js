@@ -19,25 +19,29 @@ let pad4 = document.querySelector("#board__pad4");
 //Create click events for each pad and push the selection into userPads
 const userClick1 = pad1.addEventListener("click", () => {
     const padFlash1 = pad1.style.backgroundColor = "#32df32";
-    setTimeout(padTimeOut1, 300);
+    const borderFlash1 = pad1.style.boxShadow = "-2px 5px 50px 10px #a7fba7";
+    setTimeout(padTimeOut1, 200);
     userPads.push(pad1);
     compareArrays();
 })
 const userClick2 = pad2.addEventListener("click", () => {
     const padFlash2 = pad2.style.backgroundColor = "#e93f3f";
-    setTimeout(padTimeOut2, 300)
+    const borderFlash2 = pad2.style.boxShadow = "2px 5px 50px 10px lightcoral";
+    setTimeout(padTimeOut2, 200)
     userPads.push(pad2);
     compareArrays();
 })
 const userClick3 = pad3.addEventListener("click", () => {
     const padFlash3 = pad3.style.backgroundColor = "#fcff52";
-    setTimeout(padTimeOut3, 300)
+    const borderFlash3 = pad3.style.boxShadow = "-2px -5px 50px 10px #c0c168";
+    setTimeout(padTimeOut3, 200)
     userPads.push(pad3);
     compareArrays();
 })
 const userClick4 = pad4.addEventListener("click", () => {
     const padFlash4 = pad4.style.backgroundColor = "#006bff";
-    setTimeout(padTimeOut4, 300)
+    const borderFlash4 = pad4.style.boxShadow = "2px -5px 50px 10px #687ec1";
+    setTimeout(padTimeOut4, 200)
     userPads.push(pad4);
     compareArrays();
 })
@@ -49,30 +53,38 @@ let userPads = [];
 //Create variables to setTimeout to revert the pad color after "flash"
 const padTimeOut1 = () => {
     pad1.style.backgroundColor = "#61D48F";
+    pad1.style.boxShadow = "";
 }; 
 const padTimeOut2 = () => {
     pad2.style.backgroundColor = "#D85E5B";
+    pad2.style.boxShadow = "";
 }; 
 const padTimeOut3 = () => {
     pad3.style.backgroundColor = "#EBEC77";
+    pad3.style.boxShadow = "";
 }; 
 const padTimeOut4 = () => {
     pad4.style.backgroundColor = "#32A4EA";
+    pad4.style.boxShadow = "";
 }; 
 
 //create function for the if statment to determine correct color flash
 const comparePads = (pad) => {
     if (pad === pad1) {
     pad1.style.backgroundColor = "#32df32";
+    pad1.style.boxShadow = "-2px 5px 50px 10px #a7fba7";
     setTimeout(padTimeOut1, 300)
     } else if (pad === pad2) {
     pad2.style.backgroundColor = "#e93f3f";
+    pad2.style.boxShadow = "2px 5px 50px 10px lightcoral";
     setTimeout(padTimeOut2, 300)
     } else if (pad === pad3) {
     pad3.style.backgroundColor = "#fcff52";
+    pad3.style.boxShadow = "-2px -5px 50px 10px #c0c168";
     setTimeout(padTimeOut3, 300)
     } else if (pad === pad4) {
     pad4.style.backgroundColor = "#006bff";
+    pad4.style.boxShadow = "2px -5px 50px 10px #687ec1";
     setTimeout(padTimeOut4, 300)
     }
 }
@@ -124,19 +136,20 @@ const playGame = () => {
 
 //create a function that compares the arrays via an if statement and for loop
 const compareArrays = () => { 
+    console.log(randomPads, userPads);
     if (randomPads.length !== userPads.length) {
         return
     } else {
         for (let i = 0; i < randomPads.length; i++) {
+            console.log(randomPads[i], userPads[i]);
             if (randomPads[i] !== userPads[i]) {
                 return;
-            } else {
-                setTimeout(() => {
-                    playGame();
-                }, 1000);
-                userPads = [];
             }
         }
+        setTimeout(() => {
+                    playGame();
+                }, 1000);
+        userPads = [];
     }  
 }    
 
