@@ -1,4 +1,5 @@
 # Game-challenge: Simon
+https://github.com/abdullah-sattar/game-challenge/blob/main/game-preview.PNG
 ## Tech Stack
  - HTML
  - CSS
